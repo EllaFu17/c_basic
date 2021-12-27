@@ -6,7 +6,7 @@ typedef struct students {
 	char num;
 } students;
 /*
-Ð´ÎÄ¼þ
+write
 */
 void writeExcel() {
 	char ch[4][2]= { 'x' ,'a' ,'h','w','x' ,'a' ,'h','w' } ;
@@ -17,18 +17,18 @@ void writeExcel() {
 	for (i=0 ; i<4 ; i++) {
 		fprintf(fp,"%c\t%c\n",ch[i][0],ch[i][1] );
 	}
-	long fh= ftell(fp);//Ö¸ÕëÎ»ÖÃ
+	long fh= ftell(fp);//point
 	printf("%ld\n",fh) ;
-	rewind(fp);//Í·Î»ÖÃ
+	rewind(fp);//head
 	fh= ftell(fp);
 	printf("%ld\n",fh) ;
-	int result = fseek( fp, 0L, SEEK_END);//yÒÆ¶¯µ½Ä©Î²
+	int result = fseek( fp, 0L, SEEK_END);//y to the end
 	printf("%ld\n",ftell(fp));
 	printf("pianyi%d\n",result);
 	fclose(fp);
 }
 /*
-    ¶ÁÎÄ¼þ
+    read
 
 	*/
 void readExcel() {
@@ -37,20 +37,20 @@ void readExcel() {
 	if(fp==NULL) {
 		printf("error!");
 		exit(0);
-	}// Õý³£ÍË³ö ¼ÓÈëÍ·ÎÄ¼þ#include <stdlib.h>
+	}
 
 	students stu[100];
 	int i;
 	char a,b;
 	for(i = 0 ; i < 6; i++) {
-    //	while(!feof(fp)) {//ÎªÊ²Ã´Õâ¸ö²»ÐÐ£¿ 
+    //	while(!feof(fp)) {//ä¸ºä»€ä¹ˆè¿™ä¸ªä¸è¡Œï¼Ÿ 
 
 		fscanf(fp,"%c",&(stu[i].name));
-		fseek(fp, 1L, SEEK_CUR);   //fpÖ¸Õë´Óµ±Ç°Î»ÖÃÏòºóÒÆ¶¯
+		fseek(fp, 1L, SEEK_CUR);   //fp moves towards
 		fscanf(fp,"%c",&(stu[i].num));
 		fseek(fp, 2L, SEEK_CUR);
 	}
-	for(i = 0 ; i < 4 ; i++) { // \tÖÆ±í·û
+	for(i = 0 ; i < 4 ; i++) { // \tåˆ¶è¡¨ç¬¦
 //		if (stu[i].name==0) {
 //			printf("end of file");
 //			break;
@@ -62,34 +62,33 @@ void readExcel() {
 	fclose(fp);
 
 	/*
-	×¢ÊÍµôÊý×é°æ±¾
 	FILE *fp;
 	//char filename[40]  ;
 	int i,j ;
 	char da[4][2] = {} ;
 
-	//printf(" ÊäÈëÎÄ¼þÃû: ");
-	//gets(filename);//ÒÑ¾­·ÏÆúµÄº¯Êýµ«ÊÇ¡¤¡¤¡¤¡¤¡¤
+	//printf("File Name: ");
+	//gets(filename);
 	fp=fopen("E:\\test3.xls","r");
 	if(fp==NULL){
 		printf("error!");
-		exit(0);// Õý³£ÍË³ö ¼ÓÈëÍ·ÎÄ¼þ#include <stdlib.h>
+		exit(0);
 	}
-	//fseek(fp, 0L, SEEK_SET);   // ´ÓÎÄ¼þµÚ1ÐÐ¿ªÊ¼¶ÁÈ¡
+	//fseek(fp, 0L, SEEK_SET);   // read from the first line
 	for(i = 0 ; i < 4 ; i++){
 
 		for(j = 0 ; j < 2 ; j++) {
 			fscanf(fp,"%c",&da[i][j]);
-			fseek(fp, 1L, SEEK_CUR);   //fpÖ¸Õë´Óµ±Ç°Î»ÖÃÏòºóÒÆ¶¯Ìø¹ý\tÖÆ±í·ûºÅ
+			fseek(fp, 1L, SEEK_CUR);   
 		}
-		fseek(fp, 1L, SEEK_CUR);//Ìø¹ý\n»»ÐÐ·ûºÅ
+		fseek(fp, 1L, SEEK_CUR);
 	}
 
 	for(i = 0 ; i < 4 ; i++){
 		printf("%c\t%c\t\n",da[i][0],da[i][1]);
 	}
 	fclose(fp);
-	//×¢ÊÍÊý×é°æ±¾½áÊø
+	//array
 	*/
 
 }
