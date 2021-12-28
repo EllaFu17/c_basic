@@ -17,8 +17,8 @@ int BToO(char s[])
 int main()
 {
     char s[100];
+    printf("Please enter a binary number:");
     while(scanf("%s",s)!=EOF)
     printf("%d\n",BToO(s));
     return 0;
 }
-
